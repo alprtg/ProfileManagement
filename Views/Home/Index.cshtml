@@ -1,0 +1,62 @@
+﻿@model List<ProfileMasterModel>;
+@{
+    ViewData["Title"] = "All Profiles";
+}
+<h2>@ViewData["Title"]</h2>
+<div class="row">
+    <h3><a asp-action="Create" class="btn btn-primary btn-sm">Add Profile</a></h3>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Full Name</th>
+                <th>Email Id</th>
+                <th>Mobile</th>
+                <th>IsActive</th>
+                <th>Created On</th>
+                <th width="180">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model == null || Model.Count <= 0)
+            {
+                <tr><td colspan="7" class="text-center">No profiles found</td></tr>
+            }
+            else
+            {
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.Id
+                        </td>
+                        <td>
+                            @item.FullName
+                        </td>
+                        <td>
+                            @item.EmailId
+                        </td>
+                        <td>
+                            @item.Mobile
+                        </td>
+                        <td>
+                            @item.IsActive
+                        </td>
+                        <td>
+                            @item.CreatedOnStr
+                        </td>
+                        <td>
+                            <a class="btn btn-primary btn-sm text-white" asp-action="Update" asp-route-Id="@item.Id" style="float:left;">
+                                <i class="fas fa-edit"></i>Update
+                            </a>
+                            <form asp-action="Delete" method="post" asp-route-id="@item.Id" style="float:left; margin-left:10px;">
+                                <button class="btn btn-danger btn-sm text-white">Delete</button>
+                            </form>                            
+                        </td>
+                    </tr>
+
+                }
+            }
+            </tbody>
+    </table>
+</div>

@@ -1,0 +1,52 @@
+﻿@model ProfileMasterModel
+
+@{
+    Layout = "_Layout";
+    var title = "Add Profile";
+    ViewData["Title"] = title;
+}
+
+<style>
+    .input-validation-error {
+        border-color: red;
+    }
+</style>
+
+<h2>@title</h2>
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form class="m-1 p-1" method="post">
+    <input asp-for="Id" type="hidden" value="-1" readonly class="form-control" />
+    <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label asp-for="FullName"></label>
+        <input asp-for="FullName" class="form-control" />
+        <span asp-validation-for="FullName" class="text-danger"></span>
+    </div>
+    <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label asp-for="EmailId"></label>
+        <input asp-for="EmailId" type="email" class="form-control" />
+        <span asp-validation-for="EmailId" class="text-danger"></span>
+    </div>
+    <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label asp-for="Mobile"></label>
+        <input asp-for="Mobile" type="tel" class="form-control" />
+        <span asp-validation-for="Mobile" class="text-danger"></span>
+    </div>
+    <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <label asp-for="IsActive"></label>
+        <select asp-for="IsActive" class="form-control">
+            <option value=true>Active</option>
+            <option value=false>In Active</option>
+        </select>
+        <span asp-validation-for="IsActive" class="text-danger"></span>
+    </div>
+    <div class="clearfix"></div>
+    <div class="form-group col-md-6 col-lg-6 col-sm-12">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    <div class="clearfix"></div>
+</form>
+
+@*<script src="~/lib/jquery/jquery.min.js"></script>
+<script src="~/lib/jquery-validate/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>*@
